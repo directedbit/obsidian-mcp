@@ -908,12 +908,15 @@ def main():
     )
     args = parser.parse_args()
 
-    mcp.run(
-        transport=args.transport,
-        host=args.host,
-        port=args.port,
-        path=args.path,
-    )
+    if args.transport == "stdio":
+        mcp.run(transport=args.transport)
+    else:
+        mcp.run(
+            transport=args.transport,
+            host=args.host,
+            port=args.port,
+            path=args.path,
+        )
 
 
 if __name__ == "__main__":
